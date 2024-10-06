@@ -1,6 +1,7 @@
 import random as r
 import time
+import os
 from Bus import Bus
 
-def main():
-    pass
+bus = Bus("ISRAEL", "PALESTINA")
+bus.clearConsole()
