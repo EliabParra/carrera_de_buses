@@ -2,17 +2,16 @@ import random as r
 import os
 import time
 
+def clearConsole():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
 class Bus:
     def __init__(self, bus1, bus2):
         self.nombre1 = bus1
         self.nombre2 = bus2
-        self.inicioCarrera()
-        
-    def clearConsole():
-        if os.name == 'nt':
-            os.system('cls')
-        else:
-            os.system('clear')
 
     def inicioCarrera(self, n1 = 0, n2 = 0):
         print("Iniciando carrera de buses")
@@ -20,13 +19,14 @@ class Bus:
         print(self.drawBuses(n1, n2))
         time.sleep(1)
         
-        while n1 and n2 < 100:
+        while n1 < 100 and n2 < 100:
             variable = r.randint(1, 2)
+
             if variable == 1:
                 n1 += 1
             else: 
                 n2 += 1
-            self.clearConsole()
+            clearConsole()
             print(self.drawBuses(n1,n2))
             time.sleep(0.07)
         

@@ -2,6 +2,8 @@ import random as r
 import time
 import os
 from Bus import Bus
+from Bus import clearConsole
 
 bus = Bus("ISRAEL", "PALESTINA")
-bus.clearConsole()
+clearConsole()
+bus.inicioCarrera()
