@@ -3,7 +3,6 @@ import os
 import time
 
 class Bus:
-    self.variable = 0
     def __init__(self, bus1, bus2):
         self.nombre1 = bus1
         self.nombre2 = bus2
@@ -21,17 +20,18 @@ class Bus:
         print(self.drawBuses(n1, n2))
         time.sleep(1)
         
-        while n1 < 100 or n2 < 100:
-            self.variable = r.randint(1, 2)
-            if self.variable == 1:
+        while n1 and n2 < 100:
+            variable = r.randint(1, 2)
+            if variable == 1:
                 n1 += 1
-                self.clearConsole()
-            
-
-        self.clearConsole()
-        print("Terminando carrera de buses")
-        print("-" * 155)
-
+            else: 
+                n2 += 1
+            self.clearConsole()
+            print(self.drawBuses(n1,n2))
+            time.sleep(0.07)
+        
+        self.ganador(n1,n2)
+        
     def drawBuses(self, n1, n2):
         output = []
         output.append((n1 * " ") + "_______________  " + ((100 - n1) * " ") + "|")
@@ -45,3 +45,11 @@ class Bus:
         output.append((n2 * " ") + "|~~~@~~~~~~~~~@~~~|)" + ((95  - n2) * " ") + "|")
         output.append(155 * "_")
         return "\n".join(output)
+    
+    def ganador(self,n1,n2):
+        gano=""
+        if n1>=100:
+            gano=self.nombre1
+        if n2>=100:
+            gano=self.nombre2
+        print(f"DENLE UNA CERVEZA A {gano}")
